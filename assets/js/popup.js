@@ -6,10 +6,15 @@ $(function () {
 
   let total = 0;
   function getInitialValue() {
-    chrome.storage.sync.get(["total"], function (budget) {
+    chrome.storage.sync.get(["total", "limit"], function (budget) {
       if (budget.total && !isNaN(budget.total)) {
         total = budget.total;
       }
+
+      if (budget.limit && !isNaN(budget.limit)) {
+        limit.val(budget.limit);
+      }
+
       spend.val(total);
     });
   }
@@ -17,14 +22,24 @@ $(function () {
   $("#budget-manager").submit(function (event) {
     event.preventDefault();
     let total = 0;
-    chrome.storage.sync.get(["total"], function (budget) {
+    chrome.storage.sync.get(["total", "limit"], function (budget) {
       if (budget.total && !isNaN(budget.total)) {
         total = budget.total;
       }
-      const currentAmount = total + parseFloat(amount.val());
-      spend.val(currentAmount);
-      chrome.storage.sync.set({ total: currentAmount });
-      amount.val("");
+      const amountValue = parseFloat(amount.val());
+
+      if (budget.limit && !isNaN(budget.limit)) {
+        if (amountValue > budget.limit) {
+          alert("Amount should be less than limit value.");
+          return;
+        }
+      }
+      if (amountValue) {
+        const currentAmount = total + amountValue;
+        spend.val(currentAmount);
+        chrome.storage.sync.set({ total: currentAmount });
+        amount.val("");
+      }
     });
   });
   getInitialValue();

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Budget Manager</title>
+    <link
+      type="text/css"
+      href="./assets/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link type="text/css" href="./assets/css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <section class="container">
+      <div class="p-2">
+        <h5 class="text-info mb-5">Budget Manager Settings</h5>
+        <form id="budget-manager">
+          <table class="mt-3 table-tripped">
+            <tbody>
+              <tr>
+                <td>
+                  <label for="limit">Limit</label>
+                </td>
+                <td class="pl-2">
+                  <input
+                    id="limit"
+                    required
+                    type="number"
+                    class="form-control"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td class="text-center pt-3">
+                  <button
+                    type="submit"
+                    class="btn btn-sm btn-outline-secondary"
+                  >
+                    Save
+                  </button>
+                </td>
+                <td class="text-center pt-3">
+                  <button
+                    id="reset-total"
+                    type="button"
+                    class="btn btn-sm btn-outline-warning"
+                  >
+                    Reset Total
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </form>
+      </div>
+    </section>
+    <script src="./assets/js/jquery.min.js" type="text/javascript"></script>
+    <script src="./assets/js/popper.min.js" type="text/javascript"></script>
+    <script src="./assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="./assets/js/options.js" type="text/javascript"></script>
+  </body>
+</html>
