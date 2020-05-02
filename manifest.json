@@ -13,5 +13,9 @@
     "default_icon": "icon-16.png",
     "default_popup": "popup.html"
   },
-  "permissions": ["storage", "notifications"]
+  "background": {
+    "scripts": ["eventPage.js"],
+    "persistent": false
+  },
+  "permissions": ["storage", "notifications", "contextMenus"]
 }
