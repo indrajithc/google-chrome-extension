@@ -30,7 +30,13 @@ $(function () {
 
       if (budget.limit && !isNaN(budget.limit)) {
         if (amountValue > budget.limit) {
-          alert("Amount should be less than limit value.");
+          const notificationOptions = {
+            type: "basic",
+            iconUrl: "icon-48.png",
+            title: "Limit reached",
+            message: "Amount should be less than limit value.",
+          };
+          chrome.notifications.create("limtiNotif", notificationOptions);
           return;
         }
       }
